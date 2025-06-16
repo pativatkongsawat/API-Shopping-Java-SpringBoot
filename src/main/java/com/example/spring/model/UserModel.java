@@ -4,6 +4,8 @@ package com.example.spring.model;
 
 import java.time.LocalDateTime;
 
+
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -42,5 +44,39 @@ public class UserModel {
     @Column(name = "updated_by")
     private String updatedBy;
 
+    public UserModel() {}
+
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+
+
+    public String getFirstname() {return firstname;}
+    public void setFirstname(String firstname) {this.firstname = firstname;}
+
+    public String getLastname() {return lastname;}
+    public void setLastname(String lastname) {this.lastname = lastname;}
+
+    public String getAddress(){return address;}
+    public void setAddress(String address){ this.address = address;}
+
+    public String getEmail() {return email;}
+    public void setEmail(String email) {this.email = email;}
+
+    public String getPassword() {return password;}
+    public void setPassword(String password) {this.password = password;}
     
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
+
+    public LocalDateTime getUpdatedAt() { return updatedAt; }
+    public void setUpdatedAt(LocalDateTime updatedAt) { this.updatedAt = updatedAt; }
+
+    public LocalDateTime getDeletedAt() { return deletedAt; }
+    public void setDeletedAt(LocalDateTime deletedAt) { this.deletedAt = deletedAt; }
+
+    public int getPermissionId() { return permissionId; }
+    public void setPermissionId(int permissionId) { this.permissionId = permissionId; }
+
+    public String getUpdatedBy() { return updatedBy; }
+    public void setUpdatedBy(String updatedBy) { this.updatedBy = updatedBy; }
 }

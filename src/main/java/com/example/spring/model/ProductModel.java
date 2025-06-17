@@ -2,7 +2,10 @@ package com.example.spring.model;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -11,24 +14,30 @@ import jakarta.persistence.Table;
 public class ProductModel {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String id;
 
     private String name;
 
     private String description;
 
-    private int price;
+    private double price;
 
     private int quantity;
 
     private String image;
 
+    @Column(name = "created_at")
     private LocalDateTime created_at;
 
+    @Column(name = "update_at")
     private LocalDateTime update_at;
 
+
+    @Column(name = "deleted_at")
     private LocalDateTime deleted_at;
 
+    @Column(name = "category_id")
     private int category_id;
 
 
@@ -43,7 +52,7 @@ public class ProductModel {
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
 
-    public int getPrice() {return price;}
+    public double getPrice() {return price;}
     public void setPrice(int price) {this.price = price;}
 
     public int getQuantity() {return quantity;}

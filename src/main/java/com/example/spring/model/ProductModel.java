@@ -15,7 +15,7 @@ public class ProductModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Integer id;
 
     private String name;
 
@@ -23,7 +23,7 @@ public class ProductModel {
 
     private double price;
 
-    private int quantity;
+    private Integer quantity;
 
     private String image;
 
@@ -43,8 +43,8 @@ public class ProductModel {
 
     public ProductModel(){}
 
-    public String getId() {return id;}
-    public void setId(String id) {this.id = id;}
+    public Integer getId() {return id;}
+    public void setId(Integer id) {this.id = id;}
 
     public String getName() {return name;}
     public void setName(String name) {this.name = name;}

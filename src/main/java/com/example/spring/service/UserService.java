@@ -25,7 +25,13 @@ public class UserService {
     }
 
     public Optional<UserModel> GetById(String id) {
-        return userRepository.findById(id);
+        Optional<UserModel> users =  userRepository.findById(id);
+        if(users.isEmpty()){
+
+            throw new IllegalArgumentException("ไม่พบผู้ใช้งานไอดี = "+id);
+
+        }
+        return users;
 
     }
 

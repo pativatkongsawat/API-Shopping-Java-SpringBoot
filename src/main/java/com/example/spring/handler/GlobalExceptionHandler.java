@@ -1,4 +1,6 @@
-package com.example.spring.exception;
+package com.example.spring.handler;
+
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +13,7 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-    
+   
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<?> handleBadRequest(IllegalArgumentException ex) {
         Map<String, Object> body = new HashMap<>();

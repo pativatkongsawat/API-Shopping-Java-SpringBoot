@@ -29,12 +29,21 @@ public class UserService {
 
     }
 
-    public UserModel CreateUser(UserModel user){
-        user.setCreatedAt(LocalDateTime.now());
-        user.setUpdatedAt(LocalDateTime.now());
-        user.setDeletedAt(null);
-
-        return userRepository.save(user);
+    public UserModel CreateUser(UserModel user) {
+    if (user.getFirstname() == null || user.getFirstname().isBlank() ||
+        user.getLastname() == null || user.getLastname().isBlank() ||
+        user.getEmail() == null || user.getEmail().isBlank() ||
+        user.getPassword() == null || user.getPassword().isBlank()) {
+        
+        throw new IllegalArgumentException("กรุณากรอกข้อมูลให้ครบทุกช่อง");
     }
+
+    user.setCreatedAt(LocalDateTime.now());
+    user.setUpdatedAt(LocalDateTime.now());
+    user.setDeletedAt(null);
+
+    return userRepository.save(user);
+}
+
     
 }

@@ -1,5 +1,6 @@
 package com.example.spring.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -26,6 +27,14 @@ public class UserService {
     public Optional<UserModel> GetById(UUID id){
         return userRepository.findById(id);
 
+    }
+
+    public UserModel CreateUser(UserModel user){
+        user.setCreatedAt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
+        user.setDeletedAt(null);
+
+        return userRepository.save(user);
     }
     
 }

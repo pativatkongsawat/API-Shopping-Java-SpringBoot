@@ -2,7 +2,7 @@ package com.example.spring.controller;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,8 +32,10 @@ public class UserController {
         return userService.GetAllUser();
     }
     @GetMapping("/{id}")
-    public ResponseEntity<UserModel> getUserbyId(@PathVariable UUID id){
+    public ResponseEntity<UserModel> getUserbyId(@PathVariable String id){
+       
         Optional <UserModel> user = userService.GetById(id);
+        
         return user.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
         
     }

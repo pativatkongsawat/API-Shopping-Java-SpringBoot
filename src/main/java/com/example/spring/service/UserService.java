@@ -3,7 +3,7 @@ package com.example.spring.service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
+
 
 import org.springframework.stereotype.Service;
 
@@ -24,7 +24,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<UserModel> GetById(UUID id){
+    public Optional<UserModel> GetById(String id){
         return userRepository.findById(id);
 
     }

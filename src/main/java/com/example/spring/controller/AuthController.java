@@ -17,11 +17,13 @@ public class AuthController {
         this.userService = userService;
     }
 
+    @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest req){
         AuthResponse res = userService.login(req);
         return ResponseEntity.ok(res);
     }
     
+    @PostMapping("/register")
     public ResponseEntity<UserModel> register(@RequestBody UserModel user){
 
         UserModel data = userService.CreateUser(user);

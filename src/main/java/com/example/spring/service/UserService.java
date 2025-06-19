@@ -108,11 +108,22 @@ public class UserService {
         UserModel user = userRepository.findByEmail(req.getEmail())
                 .orElseThrow(() -> new NoSuchElementException("ไม่พบผู้ใช้งานด้วยอีเมลนี้"));
 
-        if(!user.getPassword().equals(req.getPassword())){
+        if (!user.getPassword().equals(req.getPassword())) {
             throw new RuntimeException("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
         }
 
         String token = jwtUtil.generateToken(user);
-        return null;
+        
+        AuthResponse res = new AuthResponse();
+        res.setStatus("Login Success");
+        res.setToken(token);
+        res.setId(user.getId());
+        res.setEmail(user.getEmail());
+        res.setFirstName(user.getFirstname());
+        res.setLastName(user.getLastname());
+        res.setPermissionId(user.getPermissionId());
+
+        return res;
+
     }
 }

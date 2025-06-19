@@ -18,7 +18,7 @@ public class AuthController {
     }
 
     public ResponseEntity<AuthResponse> login(@RequestBody AuthRequest req){
-        AuthResponse res = userService.Login(req);
+        AuthResponse res = userService.login(req);
         return ResponseEntity.ok(res);
     }
     

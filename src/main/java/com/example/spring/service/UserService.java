@@ -2,11 +2,12 @@ package com.example.spring.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
-
 
 import org.springframework.stereotype.Service;
 
+import com.example.spring.config.OAuth2Config;
 import com.example.spring.helper.AuthRequest;
 import com.example.spring.helper.AuthResponse;
 import com.example.spring.model.UserModel;
@@ -16,6 +17,8 @@ import com.example.spring.repository.UserRepository;
 public class UserService {
 
     private final UserRepository userRepository;
+
+    private OAuth2Config jwtUtil;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -27,10 +30,10 @@ public class UserService {
     }
 
     public Optional<UserModel> GetById(String id) {
-        Optional<UserModel> users =  userRepository.findById(id);
-        if(users.isEmpty()){
+        Optional<UserModel> users = userRepository.findById(id);
+        if (users.isEmpty()) {
 
-            throw new IllegalArgumentException("ไม่พบผู้ใช้งานไอดี = "+id);
+            throw new IllegalArgumentException("ไม่พบผู้ใช้งานไอดี = " + id);
 
         }
         return users;
@@ -94,18 +97,22 @@ public class UserService {
         });
     }
 
-    public boolean DeleteUser(String id){
-        return userRepository.findById(id).map(user ->{
+    public boolean DeleteUser(String id) {
+        return userRepository.findById(id).map(user -> {
             userRepository.delete(user);
             return true;
         }).orElse(false);
     }
 
-    public AuthResponse Login(AuthRequest req){
+    public AuthResponse login(AuthRequest req) {
+        UserModel user = userRepository.findByEmail(req.getEmail())
+                .orElseThrow(() -> new NoSuchElementException("ไม่พบผู้ใช้งานด้วยอีเมลนี้"));
 
+        if(!user.getPassword().equals(req.getPassword())){
+            throw new RuntimeException("อีเมลหรือรหัสผ่านไม่ถูกต้อง");
+        }
+
+        String token = jwtUtil.generateToken(user);
         return null;
-
     }
-    
-
 }

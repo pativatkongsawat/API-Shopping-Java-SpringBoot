@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.example.spring.helper.AuthRequest;
+import com.example.spring.helper.AuthResponse;
 import com.example.spring.model.UserModel;
 import com.example.spring.repository.UserRepository;
 
@@ -98,5 +100,12 @@ public class UserService {
             return true;
         }).orElse(false);
     }
+
+    public AuthResponse Login(AuthRequest req){
+
+        return null;
+
+    }
+    
 
 }

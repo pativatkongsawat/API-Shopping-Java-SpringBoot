@@ -6,4 +6,4 @@ import com.example.spring.model.ProductModel;
 
 public interface ProductRepository extends JpaRepository<ProductModel , Integer> {
 
-    }
+}

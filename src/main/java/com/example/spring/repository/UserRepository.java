@@ -10,5 +10,4 @@ import com.example.spring.model.UserModel;
 
 public interface UserRepository extends JpaRepository<UserModel ,String>{
 
-    
 }

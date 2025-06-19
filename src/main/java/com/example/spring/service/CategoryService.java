@@ -29,4 +29,16 @@ public class CategoryService {
 
         return category;
     }
+
+    public CategoryModel CreateCategory(CategoryModel category){
+
+        if(category.getName() == null || category.getName().isBlank()){
+
+            throw new IllegalArgumentException("กรุณาใส่ชื่อหมวดหมู่เพื่อเพิ่ม");
+
+        }
+
+        return categoryRepository.save(category);
+
+    }
 }

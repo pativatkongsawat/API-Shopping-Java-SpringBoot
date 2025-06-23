@@ -29,12 +29,12 @@ public class OrderModel {
     private String user_id;
 
 
-    private Double total_price;
+    private double total_price;
 
 
     private String created_by;
 
-    private String status;
+    private String status = "unpaid";
 
     public OrderModel(){};
 
@@ -54,8 +54,8 @@ public class OrderModel {
     public String getUserId(){return user_id;}
     public void setUserId(String user_id) {this.user_id = user_id;}
 
-    public Double getTotalPrice(){return total_price;}
-    public void setTotalPrice(Double total_price) {this.total_price = total_price;}
+    public double getTotalPrice(){return total_price;}
+    public void setTotalPrice(double total_price) {this.total_price = total_price;}
 
     public String getCreateBy(){return created_by;}
     public void setCreateBy(String created_by ) {this.created_by = created_by;}

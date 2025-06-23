@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "order_has_products")
-public class OrderHasProduct {
+public class OrderHasProductModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class OrderHasProduct {
 
     private Integer order_product_total;
 
-    public OrderHasProduct(){};
+    public OrderHasProductModel(){};
 
     public Integer getId(){return id;}
     public void setId(Integer id){this.id = id;}

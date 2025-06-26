@@ -1,6 +1,10 @@
 package com.example.spring.service;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+
 
 import com.example.spring.model.ProductModel;
 import com.example.spring.repository.ProductRepository;
@@ -33,5 +37,33 @@ public class ProductService {
 
         return productRepository.save(product);
     }
+
+    public boolean deleteProduct(int id){
+        return productRepository.findById(id).map(product -> {
+            productRepository.delete(product);
+            return true;
+
+        }).orElse(false);
+    }
+
+    public List<ProductModel> getAllProduct(){
+
+        return productRepository.findAll();
+    }
+
+    public Optional<ProductModel> getProductById(int id){
+
+        Optional<ProductModel> product = productRepository.findById(id);
+
+        if(product.isEmpty()){
+
+            throw new IllegalArgumentException("ไม่พบสินค้าไอดี =" +id );
+
+        }
+        return product;
+
+    }
+
+    
     
 }

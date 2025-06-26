@@ -70,4 +70,34 @@ public class CategoryService {
         }).orElse(false);
        
     }
+
+    public Optional<CategoryModel> updateCategory(int id , CategoryModel category){
+
+        if(id <=0){
+
+            throw new IllegalArgumentException("ระบุไอดีเพื่อเเก้ไขหมวดหมู่");
+
+        }
+
+        boolean categorynullisbank = (category.getName() == null && category.getName().isBlank());
+
+
+        if(categorynullisbank){
+
+            throw new IllegalArgumentException("ระบุข้อมูลหนึ่งช่องสำหรับเเก้ไขข้อมูล");
+
+        }
+
+        return categoryRepository.findById(id).map(data ->{
+
+            if(category.getName() != null && !category.getName().isBlank()){
+                data.setName(category.getName());
+            }
+            
+            categoryRepository.save(data);
+            return data;
+
+        });
+
+    }
 }

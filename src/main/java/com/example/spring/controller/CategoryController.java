@@ -49,8 +49,13 @@ public class CategoryController {
             return ResponseEntity.notFound().build();
         }
 
-
-
     } 
+
+    public ResponseEntity<CategoryModel> updateCategory(@PathVariable int id , @RequestBody CategoryModel category){
+
+        return categoryService.updateCategory(id, category).map(ResponseEntity :: ok)
+               .orElse(ResponseEntity.notFound().build());
+
+    }
 
 }

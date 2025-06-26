@@ -41,4 +41,33 @@ public class CategoryService {
         return categoryRepository.save(category);
 
     }
+
+    public List<CategoryModel> getAllCategory(){
+        return categoryRepository.findAll();
+    }
+
+    public Optional<CategoryModel> getByIdCategory(int id){
+
+        Optional<CategoryModel> data = categoryRepository.findById(id);
+
+        if(data.isEmpty()){
+
+            throw new IllegalArgumentException("ไม่พบหมวดหมู่ไอดีนี้ = " + id);
+
+        }
+
+
+        return data;
+
+    }
+
+    public boolean deleteCategory(int id){
+       
+        return categoryRepository.findById(id).map(category -> {
+            categoryRepository.delete(category);
+            return true;
+
+        }).orElse(false);
+       
+    }
 }

@@ -61,6 +61,12 @@ public class ProductController {
 
     }
 
+    public ResponseEntity<ProductModel> updateProduct(@PathVariable int id , @RequestBody ProductModel product){
+
+        return  productService.updateProduct(id, product).map(ResponseEntity :: ok).orElse(ResponseEntity.notFound().build());
+
+    }
+
 
     
 }

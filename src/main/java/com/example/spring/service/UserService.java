@@ -58,11 +58,11 @@ public class UserService {
 
     public Optional<UserModel> updateUser(String id, UserModel newUser) {
 
-        boolean allFieldsBlank = (newUser.getFirstname() == null || newUser.getFirstname().isBlank()) &&
-                (newUser.getLastname() == null || newUser.getLastname().isBlank()) &&
-                (newUser.getEmail() == null || newUser.getEmail().isBlank()) &&
-                (newUser.getPassword() == null || newUser.getPassword().isBlank()) &&
-                (newUser.getAddress() == null || newUser.getAddress().isBlank()) &&
+        boolean allFieldsBlank = (newUser.getFirstname() == null && newUser.getFirstname().isBlank()) ||
+                (newUser.getLastname() == null && newUser.getLastname().isBlank()) ||
+                (newUser.getEmail() == null && newUser.getEmail().isBlank()) ||
+                (newUser.getPassword() == null && newUser.getPassword().isBlank()) ||
+                (newUser.getAddress() == null && newUser.getAddress().isBlank()) ||
                 (newUser.getPermissionId() == 0);
 
         if (allFieldsBlank) {

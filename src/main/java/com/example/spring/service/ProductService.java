@@ -64,6 +64,12 @@ public class ProductService {
 
     }
 
+    public Optional<ProductModel> updateProduct(int id , ProductModel product){
+
+        boolean productgetblank = (product.getImage() == null || product.getImage().isBlank()) &&
+                                  (product.getName() == null);
+    }
+
     
     
 }

@@ -3,10 +3,13 @@ package com.example.spring.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.stereotype.Service;
+
 import com.example.spring.model.CategoryModel;
 
 import com.example.spring.repository.CategoryRepository;
 
+@Service
 public class CategoryService {
 
     private final CategoryRepository categoryRepository;

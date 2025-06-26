@@ -4,11 +4,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-
+import org.springframework.stereotype.Service;
 
 import com.example.spring.model.ProductModel;
 import com.example.spring.repository.ProductRepository;
 
+@Service
 public class ProductService {
 
     private final ProductRepository productRepository;

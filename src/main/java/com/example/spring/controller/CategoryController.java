@@ -6,10 +6,14 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.example.spring.model.CategoryModel;
 import com.example.spring.service.CategoryService;
 
+@RestController
+@RequestMapping("/api/category")
 public class CategoryController {
     
     private final CategoryService categoryService;

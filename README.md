@@ -7,9 +7,9 @@ A backend system for managing Shopping Card, built with Java and SpringBoot
 A backend system for managing attendance, built with TypeScript and Fastify.
 
 <p align="center">
-  <img src="image/java.png" width="85" />
+  <img src="image/java.png" width="100" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  <img src="image/sp.png" width="120" />
+  <img src="image/sp.png" width="90" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <img src="image/mysql.png" width="100" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -23,14 +23,13 @@ A backend system for managing attendance, built with TypeScript and Fastify.
 
 ## Technology Stack
 
-- Language: TypeScripts
-- Framework: Fastify
+- Language: Java
+- Framework: Spring boot
 - Database: MySQL 
-- ORM: Prisma
 - Authentication: JWT
 - API Communication: RESTful API
 - Containerization: Docker & Docker Compose
-- API Documentation: Postman , Swagger
+- API Documentation: Postman 
 
 
 ## ER Diagram

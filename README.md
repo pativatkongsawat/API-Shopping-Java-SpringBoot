@@ -2,10 +2,6 @@
 
 A backend system for managing Shopping Card, built with Java and SpringBoot
 
-## Attendance API (Fastify.Ts)
-
-A backend system for managing attendance, built with TypeScript and Fastify.
-
 <p align="center">
   <img src="image/java.png" width="100" />
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

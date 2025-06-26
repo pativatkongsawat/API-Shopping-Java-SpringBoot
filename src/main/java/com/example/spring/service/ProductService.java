@@ -66,8 +66,53 @@ public class ProductService {
 
     public Optional<ProductModel> updateProduct(int id , ProductModel product){
 
-        boolean productgetblank = (product.getImage() == null || product.getImage().isBlank()) &&
-                                  (product.getName() == null);
+        LocalDateTime now = LocalDateTime.now();
+
+        if(id <= 0){
+
+            throw new IllegalArgumentException("ระบุไอดีสินค้าเพื่อเเก้ไข");
+        }
+
+        
+
+        boolean productgetblank = (product.getImage() == null && product.getImage().isBlank()) ||
+                                  (product.getName() == null && product.getName().isBlank())||
+                                  (product.getPrice() <= 0) || (product.getQuantity() <= 0)||
+                                  (product.getCategoryId() <= 0);
+
+        if(productgetblank){
+            throw new IllegalArgumentException("เพิ่มข้อมูลอย่างน้อย 1 ช่องเพื่อเเก้ไข");
+        }
+
+        return productRepository.findById(id).map(data -> {
+
+            if(product.getName() != null && !product.getName().isBlank()){
+                data.setName(product.getName());
+            }
+
+            if(product.getImage() != null && product.getImage().isBlank()){
+                data.setImage(product.getImage());
+            }
+
+             if(product.getPrice() > 0){
+                data.setPrice(product.getPrice());
+            }
+
+            if(product.getQuantity() > 0){
+                data.setQuantity(product.getQuantity());
+            }
+
+            if(product.getCategoryId() > 0){
+                data.setCategoryId(product.getCategoryId());
+            }
+
+            data.setUpdatedAt(now);
+
+            return productRepository.save(data);
+
+        });
+
+
     }
 
     

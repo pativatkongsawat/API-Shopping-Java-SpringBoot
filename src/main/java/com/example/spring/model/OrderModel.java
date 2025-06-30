@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,52 +19,41 @@ public class OrderModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     private LocalDateTime create_at;
-
-
     private LocalDateTime updated_at;
-
-
     private LocalDateTime deleted_at;
 
-    private String user_id;
-
-
     private double total_price;
-
-
     private String created_by;
-
     private String status = "unpaid";
 
-    public OrderModel(){};
-
-
-    public Integer getId() {return id;}
-    public void setId(Integer id) {this.id = id;}
-
-    public LocalDateTime getCreateAt() {return create_at;}
-    public void setCreateAt(LocalDateTime create_at) {this.create_at = create_at;}
-
-    public LocalDateTime getUpdateAt() {return updated_at;}
-    public void setUpdateAt(LocalDateTime updated_at) {this.updated_at = updated_at;}
-
-    public LocalDateTime getDeleteAt(){return deleted_at;}
-    public void setDeleteAt(LocalDateTime deleted_at){this.deleted_at = deleted_at;}
-
-    public String getUserId(){return user_id;}
-    public void setUserId(String user_id) {this.user_id = user_id;}
-
-    public double getTotalPrice(){return total_price;}
-    public void setTotalPrice(double total_price) {this.total_price = total_price;}
-
-    public String getCreateBy(){return created_by;}
-    public void setCreateBy(String created_by ) {this.created_by = created_by;}
-
-    public String getStatus(){return status;}
-    public void setStatus(String status) {this.status = status;}
-
+   
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id") 
+    private UserModel user;
 
     
+    public Integer getId() { return id; }
+    public void setId(Integer id) { this.id = id; }
+
+    public LocalDateTime getCreateAt() { return create_at; }
+    public void setCreateAt(LocalDateTime create_at) { this.create_at = create_at; }
+
+    public LocalDateTime getUpdateAt() { return updated_at; }
+    public void setUpdateAt(LocalDateTime updated_at) { this.updated_at = updated_at; }
+
+    public LocalDateTime getDeleteAt() { return deleted_at; }
+    public void setDeleteAt(LocalDateTime deleted_at) { this.deleted_at = deleted_at; }
+
+    public double getTotalPrice() { return total_price; }
+    public void setTotalPrice(double total_price) { this.total_price = total_price; }
+
+    public String getCreateBy() { return created_by; }
+    public void setCreateBy(String created_by) { this.created_by = created_by; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
+    public UserModel getUser() { return user; }
+    public void setUser(UserModel user) { this.user = user; }
 }

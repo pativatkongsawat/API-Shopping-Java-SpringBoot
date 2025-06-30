@@ -14,6 +14,8 @@ import com.example.spring.helper.OrderCreateRequest;
 import com.example.spring.model.OrderHasProductModel;
 import com.example.spring.service.OrderService;
 
+import jakarta.servlet.http.HttpServletRequest;
+
 @RestController
 @RequestMapping("/api/order")
 public class OrderController {
@@ -25,8 +27,8 @@ public class OrderController {
     }
 
     @PostMapping("/orders")
-    public ResponseEntity<List<OrderHasProductModel>> createOrder(@RequestBody OrderCreateRequest order) {
-        List<OrderHasProductModel> result = orderService.CreateOrder(order);
+    public ResponseEntity<List<OrderHasProductModel>> createOrder(@RequestBody OrderCreateRequest order ,  HttpServletRequest request) {
+        List<OrderHasProductModel> result = orderService.CreateOrder(order , request);
         return ResponseEntity.ok(result);
     }
 

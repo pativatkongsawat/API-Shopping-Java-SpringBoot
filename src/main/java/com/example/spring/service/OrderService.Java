@@ -11,7 +11,7 @@ import com.example.spring.helper.OrderCreateRequest;
 import com.example.spring.helper.RequestProduct;
 import com.example.spring.model.OrderHasProductModel;
 import com.example.spring.model.OrderModel;
-import com.example.spring.model.UserModel;
+
 import com.example.spring.repository.OrderHasProductRepository;
 import com.example.spring.repository.OrderRepository;
 import com.example.spring.repository.UserRepository;
@@ -24,7 +24,7 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final OrderHasProductRepository orderHasProductRepository;
-    private final UserRepository userRepository;
+  
     private final OAuth2Config jwtUtil;
 
     public OrderService(
@@ -35,7 +35,7 @@ public class OrderService {
     ) {
         this.orderRepository = orderRepository;
         this.orderHasProductRepository = orderHasProductRepository;
-        this.userRepository = userRepository;
+        
         this.jwtUtil = jwtUtil;
     }
 
@@ -63,22 +63,19 @@ public class OrderService {
         }
 
         
-        UserModel user = userRepository.findById(userId)
-                .orElseThrow(() -> new RuntimeException("User not found"));
-
-       
+    
         OrderModel order = new OrderModel();
         order.setCreateAt(now);
         order.setUpdateAt(now);
         order.setDeleteAt(null);
         order.setCreateBy(email);
         order.setTotalPrice(totalPrice);
-        order.setUser(user);
+        order.setUser(userId);
         order.setStatus("unpaid");
 
         OrderModel savedOrder = orderRepository.save(order);
 
-        // ✅ สร้าง OrderHasProductModel สำหรับแต่ละสินค้า
+        
         List<OrderHasProductModel> orderDetails = new ArrayList<>();
         for (RequestProduct p : req.getProducts()) {
             OrderHasProductModel item = new OrderHasProductModel();

@@ -7,8 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,9 +27,8 @@ public class OrderModel {
     private String status = "unpaid";
 
    
-    @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id") 
-    private UserModel user;
+
+    private String user_id;
 
     
     public Integer getId() { return id; }
@@ -54,6 +52,6 @@ public class OrderModel {
     public String getStatus() { return status; }
     public void setStatus(String status) { this.status = status; }
 
-    public UserModel getUser() { return user; }
-    public void setUser(UserModel user) { this.user = user; }
+    public String getUser_Id() { return user_id;}
+    public void setUser(String user_id) { this.user_id = user_id;}
 }

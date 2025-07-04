@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+
 import com.example.spring.config.OAuth2Config;
 import com.example.spring.helper.AuthRequest;
 import com.example.spring.helper.AuthResponse;
@@ -20,10 +21,14 @@ public class UserService {
 
     private OAuth2Config jwtUtil;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository , OAuth2Config jwtUtil) {
         this.userRepository = userRepository;
+        this.jwtUtil = jwtUtil;
+        
 
     }
+
+    
 
     public List<UserModel> GetAllUser() {
         return userRepository.findAll();

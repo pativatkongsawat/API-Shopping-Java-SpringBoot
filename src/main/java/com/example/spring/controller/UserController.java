@@ -29,7 +29,9 @@ public class UserController {
 
     }
 
-    @GetMapping
+    
+
+    @GetMapping("/")
     public List<UserModel> getAllUser() {
         return userService.GetAllUser();
     }

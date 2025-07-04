@@ -70,7 +70,7 @@ public class OrderService {
         order.setDeleteAt(null);
         order.setCreateBy(email);
         order.setTotalPrice(totalPrice);
-        order.setUser(userId);
+        order.setUser_id(userId);
         order.setStatus("unpaid");
 
         OrderModel savedOrder = orderRepository.save(order);
